@@ -1,45 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff" type=“text/css”>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Palindrome Checker</title>
 </head>
-
 <body>
     <main class="container">
-        <div class="main-wrapper">
-             
-            <h1 class="title">Is it a Palindrome?</h1>
-            <div class="input-container">
-                <div class="button-input-div">
-                    <input class="palindrome-input" id="text-input" value="" type="text"
-                        placeholder="Enter in text to check for a palindrome">
-                    <button type="button" class="palindrome-btn" id="check-btn">Click me</button>
-                </div>
-            </div>
-            <div class="results-div hidden" id="result"></div>
-            <div class="palindrome-definition-div">
-                <p class="palindrome-definition">
-                    <span role="img" aria-label="light-bulb">💡</span>
-                    A <dfn>palindrome</dfn> is a word or sentence that's spelled the same
-                    way both forward and backward, ignoring punctuation, case, and
-                    spacing.
-                </p>
-            </div>
+        <h1 class="title">Is it palindrome?</h1>
+        <div class="palindrome-div">
+            <label for="text-input">Enter in text to check for a palindrome:</label>
+            <input type="text" id="text-input" class="palindrome-input">
+            <button id="check-btn" class="palindrome-btn">Check</button>
+            <div id="result" class="results-div hidden"></div>
+        </div>
+        <div class="palindrome-definition-div">
+            <p class="palindrome-definition">
+                <span role="img" aria-label="light-bulb">💡</span>
+                A <dfn>palindrome</dfn> is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.
+            </p>
         </div>
     </main>
     <script src="script.js"></script>
 </body>
-
 </html>
