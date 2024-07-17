@@ -1,53 +1,38 @@
-const textInput = document.getElementById("text-input");
-const checkButton = document.getElementById("check-btn");
-const result = document.getElementById("result");
-const resetBtn = document.getElementById("reset-btn");
+const userInput = document.getElementById('text-input');
+const checkPalindromeBtn = document.getElementById('check-btn');
+const resultDiv = document.getElementById('result');
 
-function isPalindrome(str) {
-	const para = document.createElement("p");
-	let formattedStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
-	let reversedStr = formattedStr.split("").reverse().join("");
-	if (formattedStr === reversedStr) {
-		result.className = "results-div";
-		result.appendChild(para);
-		return (para.innerText = `${str} is a palindrom`);
-	} else {
-		result.className = "results-div";
-		result.appendChild(para);
-		return (para.innerText = `${str} is not a palindrom`);
-	}
+const checkPalindrome = (input) => {
+    const originalInput = input;
+
+    if (input === '') {
+        alert('Please input a value');
+        return;
+    }
+
+    resultDiv.replaceChildren();
+
+    const lowerCaseStr = input.replace(/[^A-Za-z0-9]/gi, '').toLowerCase(); // remove non alphanumeric characters
+    let resultMessage = `<strong>${originalInput}</strong> ${
+        lowerCaseStr === [...lowerCaseStr].reverse().join('') ? 'is' : 'is not'
+    } a palindrome`;
+
+    const pTag = document.createElement('p');
+    pTag.className = 'user-input';
+    pTag.innerHTML = resultMessage;
+    resultDiv.appendChild(pTag);
+
+    resultDiv.classList.remove('hidden'); 
 }
 
-function inputValue() {
-	const str = textInput.value;
-	return str;
-}
+userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        checkPalindrome(userInput.value);
+        userInput.value = '';
+    }
+})
 
-function checkBtn(event) {
-	event.preventDefault();
-	if (!textInput.value) {
-		alert("Please input a value");
-	}
-	if (textInput.value) {
-		setTimeout(() => {
-			textInput.value = "";
-			location.reload();
-		}, 3000);
-		const str = textInput.value;
-		isPalindrome(textInput.value);
-		return str;
-	}
-}
-
-// TODO -- configure enter key for palindrome checker
-const onKeyPress = (event) => {
-	// Key
-	console.log(event.key);
-	// KeyCode
-	console.log(event.keyCode);
-
-	// code
-	console.log(event.code);
-};
-textInput.addEventListener("input", inputValue);
-checkButton.addEventListener("click", checkBtn);
+checkPalindromeBtn.addEventListener('click', () => {
+    checkPalindrome(userInput.value);
+    userInput.value = '';
+});
